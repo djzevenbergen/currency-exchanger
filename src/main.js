@@ -31,6 +31,13 @@ $(document).ready(function () {
       })
       $("#from-this").append('</select>');
       $("#to-this").append('</select>');
+
+      console.log(res.conversion_rates);
+      let con = res.conversion_rates;
+      sessionStorage.setItem('yeet', con);
+      let data = sessionStorage.getItem('yeet');
+      console.log(data['USD']);
+
     } else {
       $("#output").text(`Sorry, there was an error "${res.error}"`);
     }
@@ -48,6 +55,10 @@ $(document).ready(function () {
       const response = await exchange.getCurrencies(fromCurrency);
       getElements(response);
     })();
+
+    // if you want aed to ars, take ars/aed and multiply by amount
+
+    // response.result toCurrency/fromCurrency * exchange amount
 
     function getElements(response) {
       if (response.result === "success") {
