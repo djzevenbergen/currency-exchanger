@@ -5,16 +5,16 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import './styles.css';
 import $ from 'jquery';
 
-$(document).ready(function () {
 
 
-  (async () => {
-    let e = new Exchange();
-    const res = await e.getCurrencies('USD');
-    getSelect(res);
-  })();
+(async () => {
+  let e = new Exchange();
+  const res = await e.getCurrencies('USD');
+  getSelect(res);
+})();
 
-  function getSelect(res) {
+function getSelect(res) {
+  if (res.result === 'success') {
     const countryCodes = Object.keys(res.conversion_rates);
     $("#from-this").append('<label for="from-text">From:</label><select class="form-style" id="from-text" name="from-text">');
     $("#to-this").append('<label for="to-text">To:</label><select class="form-style" id="to-text" name="to-text">');
@@ -26,21 +26,21 @@ $(document).ready(function () {
     })
     $("#from-this").append('</select>');
     $("#to-this").append('</select>');
+  } else {
+    $("#output").text(`Sorry, there was an error "${res.error}"`);
   }
+}
+
+
+$(document).ready(function () {
+
 
   $("#currency-form").submit(function (event) {
     event.preventDefault();
 
     let fromCurrency = $("#from-text").val();
     let toCurrency = $("#to-text").val();
-    let exchangeAmount = parseInt($("#money-text").val());
-
-    // console.log(fromCurrency);
-    // console.log(toCurrency);
-    // console.log(exchangeAmount);
-
-    // console.log(process.env.API_KEY);
-
+    let exchangeAmount = parseFloat($("#money-text").val());
 
     (async () => {
       let exchange = new Exchange();
@@ -53,8 +53,8 @@ $(document).ready(function () {
         const time = timeConverter(response.time_last_update);
         const currencies = response.conversion_rates;
         if (currencies[toCurrency]) {
-          let conversion = exchangeAmount * (currencies[toCurrency]);
-          $("#output").html('<p>' + conversion + ' ' + toCurrency + '</p><br><p>' + 'Last Update: ' + time + ' ' + ' Local Time </p>');
+          let conversion = (Math.round((exchangeAmount * (currencies[toCurrency]) * 100))) / 100;
+          $("#output").html('<p>' + conversion + ' ' + toCurrency + '</p><br><p>' + 'Last Exchange Update: ' + time + ' ' + ' Local Time </p>');
         } else {
           $("#output").html(`<p>Sorry, ${toCurrency} isn't in our database!</p>`);
         }

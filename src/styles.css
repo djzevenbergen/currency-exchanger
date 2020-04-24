@@ -1,9 +1,37 @@
+body {
+  background-color: lightgreen;
+  color:black;
+}
+
+input {
+  background-color: lightseagreen;
+}
+select {
+  background-color: lightseagreen;
+}
+
+.jumbotron {
+  background-color: greenyellow;
+  color: cadetblue;
+}
+
 .tg {
   border-collapse: collapse;
   border-spacing: 0;
 }
 
+.card-header {
+  background-color: lightseagreen;
+  color: yellow;
+}
+
+.card-body {
+  background-color: thistle;
+
+}
+
 .tg td {
+  background-color: aquamarine;
   font-family: Arial, sans-serif;
   font-size: 14px;
   padding: 10px 5px;
@@ -15,6 +43,7 @@
 }
 
 .tg th {
+  background-color: cadetblue;
   font-family: Arial, sans-serif;
   font-size: 14px;
   font-weight: normal;
