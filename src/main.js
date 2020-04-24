@@ -7,6 +7,27 @@ import $ from 'jquery';
 
 $(document).ready(function () {
 
+
+  (async () => {
+    let e = new Exchange();
+    const res = await e.getCurrencies('USD');
+    getSelect(res);
+  })();
+
+  function getSelect(res) {
+    const countryCodes = Object.keys(res.conversion_rates);
+    $("#from-this").append('<select class="form-style" id="from-text" name="from-text">');
+    $("#to-this").append('<select class="form-style" id="to-text" name="to-text">');
+
+    countryCodes.forEach(function (country) {
+      $("#from-text").append(`<option value="${country}">${country}</option>`);
+      $("#to-text").append(`<option value="${country}">${country}</option>`);
+
+    })
+    $("#from-this").append('</select>');
+    $("#to-this").append('</select>');
+  }
+
   $("#currency-form").submit(function (event) {
     event.preventDefault();
 
