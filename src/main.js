@@ -7,6 +7,7 @@ import $ from 'jquery';
 
 $(document).ready(function () {
 
+  // query api using USD and store response in session storage on page load
   (async () => {
     let e = new Exchange();
     const res = await e.getCurrencies('USD');

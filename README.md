@@ -20,10 +20,20 @@ _This web application uses classes, looping, arrays, and the Exchange-Rate API t
 * - Allows the user to enter an amount of money in USD and allow the user to choose a currency to exchange it to.
     * enter 10 USD to CAD
     * returns 14.09 CAD
+
+* - Allows the user to enter an amount of money in currency of their choice and allow the user to choose a currency to exchange it to.
+    * enter 10 CAD to CHF
+    * returns 6.91 CHF
+
+* - Shows the user when that exchange rate was last updated
+    * enter 10 USD to CAD
+    * returns "14.09 CAD Last Exchange Update: 23 Apr 2020 17:00:03 Local Time"
+
+
     
 
 ## Known Bugs
-* 
+* No Known Bugs
 
 ## License
 
