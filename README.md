@@ -17,16 +17,16 @@ _This web application uses classes, looping, arrays, and the Exchange-Rate API t
 
 ## Specs
 
-* - Shows user the 25 most recently stolen bikes in a give area 
-    * enter zip code and radius
-    * returns a list of the top 25 most recently stolen bikes in within that radius of the zip code
+* - Allows the user to enter an amount of money in USD and allow the user to choose a currency to exchange it to.
+    * enter 10 USD to CAD
+    * returns 14.09 CAD
     
 
 ## Known Bugs
-* If you enter an invalid zip code, it will just show the 25 most recently stolen bikes in the API.
+* 
 
 ## License
 
 Copyright © 2020
 
-**_DJ Zevenbergen & Brevin Cronk_**
+**_DJ Zevenbergen_**
