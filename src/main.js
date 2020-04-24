@@ -7,33 +7,34 @@ import $ from 'jquery';
 
 
 
-(async () => {
-  let e = new Exchange();
-  const res = await e.getCurrencies('USD');
-  getSelect(res);
-})();
 
-function getSelect(res) {
-  if (res.result === 'success') {
-    const countryCodes = Object.keys(res.conversion_rates);
-    $("#from-this").append('<label for="from-text">From:</label><select class="form-style" id="from-text" name="from-text">');
-    $("#to-this").append('<label for="to-text">To:</label><select class="form-style" id="to-text" name="to-text">');
-
-    countryCodes.forEach(function (country) {
-      $("#from-text").append(`<option value="${country}">${country}</option>`);
-      $("#to-text").append(`<option value="${country}">${country}</option>`);
-
-    })
-    $("#from-this").append('</select>');
-    $("#to-this").append('</select>');
-  } else {
-    $("#output").text(`Sorry, there was an error "${res.error}"`);
-  }
-}
 
 
 $(document).ready(function () {
 
+  (async () => {
+    let e = new Exchange();
+    const res = await e.getCurrencies('USD');
+    getSelect(res);
+  })();
+
+  function getSelect(res) {
+    if (res.result === 'success') {
+      const countryCodes = Object.keys(res.conversion_rates);
+      $("#from-this").append('<label for="from-text">From:</label><select class="form-style" id="from-text" name="from-text">');
+      $("#to-this").append('<label for="to-text">To:</label><select class="form-style" id="to-text" name="to-text">');
+
+      countryCodes.forEach(function (country) {
+        $("#from-text").append(`<option value="${country}">${country}</option>`);
+        $("#to-text").append(`<option value="${country}">${country}</option>`);
+
+      })
+      $("#from-this").append('</select>');
+      $("#to-this").append('</select>');
+    } else {
+      $("#output").text(`Sorry, there was an error "${res.error}"`);
+    }
+  }
 
   $("#currency-form").submit(function (event) {
     event.preventDefault();
