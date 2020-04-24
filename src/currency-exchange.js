@@ -1,0 +1,1 @@
+// https://prime.exchangerate-api.com/v5/1daee50969844330f0def97b/latest/USD
