@@ -1,9 +1,6 @@
-// https://prime.exchangerate-api.com/v5/1daee50969844330f0def97b/latest/USD
-
 export class Exchange {
   async getCurrencies(from) {
     try {
-      console.log("api call being made");
       let response = await fetch(`https://prime.exchangerate-api.com/v5/${process.env.API_KEY}/latest/${from}`);
       let jsonifiedResponse;
       if (response.ok && response.status == 200) {
@@ -28,17 +25,15 @@ export function timeConverter(UNIX_timestamp) {
   let hour = a.getHours();
   let min = a.getMinutes();
   let sec = a.getSeconds();
-
   let ret = "";
 
   if (hour > 0) {
     ret += "" + hour + ":" + (min < 10 ? "0" : "");
   }
-
   ret += "" + min + ":" + (sec < 10 ? "0" : "");
   ret += "" + sec;
 
-
   let time = date + ' ' + month + ' ' + year + ' ' + ret;
+
   return time;
 }
