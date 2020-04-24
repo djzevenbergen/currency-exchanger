@@ -19,7 +19,7 @@ module.exports = {
     new UglifyJsPlugin({ sourceMap: true }),
     new CleanWebpackPlugin(),
     new HtmlWebpackPlugin({
-      title: 'Age Calculator',
+      title: 'Currency Exchanger',
       template: './src/index.html',
       inject: 'body'
     }),
