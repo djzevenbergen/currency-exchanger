@@ -44,7 +44,15 @@ $(document).ready(function () {
 
 
       } else {
-        $("#output").append(response.error);
+        if (response.error === "unknown-code") {
+          $("#output").html("<p>Sorry, we can't find that currency</p>");
+        } else if (response.error === "malformed-request") {
+          $("#output").html("<p>Sorry, we're having some problems on our end. We should be up and running soon!");
+        } else if (response.error === "invalid-key") {
+          $("#output").html("<p>Sorry, we're having some problems on our end. We should be up and running soon!");
+        } else {
+          $("#output").html("<p>Sorry, we're maxed out on requests for the month. Try again next month!");
+        }
       }
     }
 
