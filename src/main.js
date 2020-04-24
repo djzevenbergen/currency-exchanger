@@ -16,8 +16,8 @@ $(document).ready(function () {
 
   function getSelect(res) {
     const countryCodes = Object.keys(res.conversion_rates);
-    $("#from-this").append('<select class="form-style" id="from-text" name="from-text">');
-    $("#to-this").append('<select class="form-style" id="to-text" name="to-text">');
+    $("#from-this").append('<label for="from-text">From:</label><select class="form-style" id="from-text" name="from-text">');
+    $("#to-this").append('<label for="to-text">To:</label><select class="form-style" id="to-text" name="to-text">');
 
     countryCodes.forEach(function (country) {
       $("#from-text").append(`<option value="${country}">${country}</option>`);
@@ -52,10 +52,6 @@ $(document).ready(function () {
       if (response.result === "success") {
         const time = timeConverter(response.time_last_update);
         const currencies = response.conversion_rates;
-        console.log(response.time_last_update);
-        console.log(response);
-        console.log(toCurrency);
-        console.log(currencies[toCurrency]);
         if (currencies[toCurrency]) {
           let conversion = exchangeAmount * (currencies[toCurrency]);
           $("#output").html('<p>' + conversion + ' ' + toCurrency + '</p><br><p>' + 'Last Update: ' + time + ' ' + ' Local Time </p>');

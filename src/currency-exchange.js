@@ -3,6 +3,7 @@
 export class Exchange {
   async getCurrencies(from) {
     try {
+      console.log("api call being made");
       let response = await fetch(`https://prime.exchangerate-api.com/v5/${process.env.API_KEY}/latest/${from}`);
       let jsonifiedResponse;
       if (response.ok && response.status == 200) {
