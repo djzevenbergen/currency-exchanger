@@ -14,6 +14,8 @@ _This web application uses classes, looping, arrays, and the Exchange-Rate API t
 * npm install
 * npm run start
 
+## View Deployed Application
+https://djzevenbergen.github.io/currency-exchanger/
 
 ## Specs
 
